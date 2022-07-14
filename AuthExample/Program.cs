@@ -14,7 +14,6 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -102,9 +101,7 @@ app.UseExceptionHandler(exceptionHandlerApp =>
 {
     exceptionHandlerApp.Run(async context =>
     {
-
-        // using static System.Net.Mime.MediaTypeNames;
-        context.Response.ContentType = Application.Json;
+        context.Response.ContentType = System.Net.Mime.MediaTypeNames.Application.Json;
 
         var exceptionHandlerPathFeature =
             context.Features.Get<IExceptionHandlerPathFeature>();

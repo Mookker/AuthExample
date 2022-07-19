@@ -4,7 +4,6 @@ using AuthExample.Domain.Interfaces;
 using AuthExample.Infrastructure.Features.CarFeatures;
 using AuthExample.Infrastructure.Repositories;
 using AuthExample.Infrastructure.Settings;
-using AuthExample.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -114,7 +113,6 @@ app.UseExceptionHandler(exceptionHandlerApp =>
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorResponse
                 {
                     ErrorMessage = exceptionHandlerPathFeature.Error.Message,
-                    TraceId = Guid.NewGuid(),
                     Code = StatusCodes.Status400BadRequest
                 }));
             }
@@ -124,7 +122,6 @@ app.UseExceptionHandler(exceptionHandlerApp =>
             await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorResponse
             {
                 ErrorMessage = "An exception was thrown.",
-                TraceId = Guid.NewGuid(),
                 Code = StatusCodes.Status500InternalServerError
             }));
             context.Response.StatusCode = StatusCodes.Status500InternalServerError;

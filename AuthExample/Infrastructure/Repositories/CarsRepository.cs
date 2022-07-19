@@ -1,5 +1,5 @@
 ﻿using AuthExample.Domain.Entities;
-using AuthExample.Interfaces;
+using AuthExample.Domain.Interfaces;
 using Dapper;
 using System.Data;
 using System.Data.SqlClient;

@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AuthExample.Controllers
+namespace AuthExample.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

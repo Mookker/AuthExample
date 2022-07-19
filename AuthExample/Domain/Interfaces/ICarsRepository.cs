@@ -1,6 +1,6 @@
 ﻿using AuthExample.Domain.Entities;
 
-namespace AuthExample.Interfaces;
+namespace AuthExample.Domain.Interfaces;
 
 //TODO: it can be inherited from general repository
 public interface ICarsRepository

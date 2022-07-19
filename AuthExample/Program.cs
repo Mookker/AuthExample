@@ -1,6 +1,8 @@
+using AuthExample.API.Middlewares;
 using AuthExample.API.Responses;
 using AuthExample.Domain.Entities;
 using AuthExample.Domain.Interfaces;
+using AuthExample.Infrastructure.Exceptions;
 using AuthExample.Infrastructure.Features.CarFeatures;
 using AuthExample.Infrastructure.Repositories;
 using AuthExample.Infrastructure.Settings;
@@ -105,7 +107,18 @@ app.UseExceptionHandler(exceptionHandlerApp =>
         var exceptionHandlerPathFeature =
             context.Features.Get<IExceptionHandlerPathFeature>();
 
-        if (exceptionHandlerPathFeature?.Error is ArgumentException)
+        if (exceptionHandlerPathFeature?.Error is UserBlockedException)
+        {
+            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+            await context.Response.WriteAsync(JsonConvert.SerializeObject(new ErrorResponse
+            {
+                ErrorMessage = exceptionHandlerPathFeature.Error.Message,
+                Code = StatusCodes.Status403Forbidden
+            }));
+
+        }
+
+        else if(exceptionHandlerPathFeature?.Error is ArgumentException)
         {
             context.Response.StatusCode = StatusCodes.Status400BadRequest;
             if (exceptionHandlerPathFeature?.Error != null)
@@ -132,7 +145,7 @@ app.UseExceptionHandler(exceptionHandlerApp =>
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseRequestCulture();
 app.MapControllers();
 
 app.Run();

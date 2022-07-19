@@ -13,7 +13,7 @@ namespace AuthExample.Infrastructure.Helpers
         /// Generates short-lived token for protected controller
         /// </summary>
         /// <returns></returns>
-        public static (string Token, DateTime ExpirationDate) GenerateToken(string key, string iss, bool isAdmin)
+        public static (string Token, DateTime ExpirationDate) GenerateToken(string key, string userId, string iss, bool isAdmin)
         {
             var secBytes = Encoding.UTF8.GetBytes(key);
             var securityKey = new SymmetricSecurityKey(secBytes);
@@ -25,6 +25,7 @@ namespace AuthExample.Infrastructure.Helpers
                 claims.Add(new Claim(ClaimTypes.Role, AuthRoles.Admin));
             else
                 claims.Add(new Claim(ClaimTypes.Role, AuthRoles.User));
+            claims.Add(new Claim(ClaimTypes.Name, userId));
 
             JwtSecurityToken token = new JwtSecurityToken(
                 iss,

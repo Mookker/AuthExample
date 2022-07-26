@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AuthExample.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1")]
     [ApiController]
     [AllowAnonymous]
     public class AuthController : ControllerBase

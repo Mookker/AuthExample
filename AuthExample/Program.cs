@@ -54,6 +54,7 @@ builder.Services.Configure<JwtSettings>(builder.Configuration);
 // Libraries
 builder.Services.AddMediatR(typeof(GetAllCarsQuery));
 
+builder.Services.AddApiVersioning();
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

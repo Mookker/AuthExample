@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,6 +54,10 @@ builder.Services.Configure<JwtSettings>(builder.Configuration);
 
 // Libraries
 builder.Services.AddMediatR(typeof(GetAllCarsQuery));
+builder.Services.AddAutoMapper(c =>
+{
+    c.CreateMap<User, UserResponse>();
+});
 
 builder.Services.AddApiVersioning();
 builder.Services.AddControllers();
@@ -146,7 +151,7 @@ app.UseExceptionHandler(exceptionHandlerApp =>
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseRequestCulture();
+app.CheckBLockedUser();
 app.MapControllers();
 
 app.Run();

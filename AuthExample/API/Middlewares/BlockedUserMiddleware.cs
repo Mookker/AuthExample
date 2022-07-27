@@ -38,7 +38,7 @@ namespace AuthExample.API.Middlewares
 
     public static class BlockedUserMiddlewareExtensions
     {
-        public static IApplicationBuilder UseRequestCulture(
+        public static IApplicationBuilder CheckBLockedUser(
             this IApplicationBuilder builder)
         {
             return builder.UseMiddleware<BlockedUserMiddleware>();

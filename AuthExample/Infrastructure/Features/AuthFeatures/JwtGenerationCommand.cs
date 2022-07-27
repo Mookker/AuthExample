@@ -40,7 +40,7 @@ namespace AuthExample.Infrastructure.Features.AuthFeatures
                 throw new UserBlockedException();
 
 
-            var result = JwtGenerator.GenerateToken(_jwtSettings.JwtSecret, user.Login, _jwtSettings.Iss, user.IsAdmin);
+            var result = JwtGenerator.GenerateToken(_jwtSettings.JwtSecret, user.Id, user.Login, _jwtSettings.Iss, user.IsAdmin);
             return new JwtGenerationResponse
             {
                 Token = result.Token,

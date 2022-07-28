@@ -1,8 +1,8 @@
 using AuthExample.API.Middlewares;
 using AuthExample.API.Responses;
 using AuthExample.Domain.Entities;
+using AuthExample.Domain.Exceptions;
 using AuthExample.Domain.Interfaces;
-using AuthExample.Infrastructure.Exceptions;
 using AuthExample.Infrastructure.Features.CarFeatures;
 using AuthExample.Infrastructure.Repositories;
 using AuthExample.Infrastructure.Settings;

@@ -1,5 +1,5 @@
-﻿using AuthExample.Domain.Interfaces;
-using AuthExample.Infrastructure.Exceptions;
+﻿using AuthExample.Domain.Exceptions;
+using AuthExample.Domain.Interfaces;
 using System.Security.Claims;
 
 namespace AuthExample.API.Middlewares

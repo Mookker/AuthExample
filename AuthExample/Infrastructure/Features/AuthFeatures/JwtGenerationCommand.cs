@@ -1,7 +1,7 @@
 ﻿using AuthExample.API.Responses;
 using AuthExample.Domain.Entities;
+using AuthExample.Domain.Exceptions;
 using AuthExample.Domain.Interfaces;
-using AuthExample.Infrastructure.Exceptions;
 using AuthExample.Infrastructure.Helpers;
 using AuthExample.Infrastructure.Settings;
 using MediatR;

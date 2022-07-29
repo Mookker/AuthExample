@@ -1,6 +1,6 @@
 ﻿using AuthExample.Domain.Entities;
+using AuthExample.Domain.Exceptions;
 using AuthExample.Domain.Interfaces;
-using AuthExample.Infrastructure.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
